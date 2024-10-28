@@ -1,0 +1,58 @@
+﻿@model TransactionVM
+
+<form method="POST">
+    <input asp-for="@Model.Id" hidden />
+
+  <div class="mb-3">
+  <label asp-for="@Model.ProductId"  class="form-label">Choose product</label>
+  <select asp-for="@Model.ProductId" asp-items="@Model.ProductList" id="input-product-id" class="form-select">
+      <option disabled selected value="@Model.ProductId"> Choose product</option>
+  </select>
+  <span asp-validation-for="@Model.ProductId" class="text-danger"></span>
+</div>
+
+ <div class="mb-3">
+  <label asp-for="@Model.Quantity" class="form-label"> Quantity</label>
+  <input asp-for="@Model.Quantity" class="form-control" id="input-quantity"  placeholder="Quantity">
+  <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="@Model.Date" class="form-label">Transaction Date</label>
+    <input type="date" id="input-date" value="@Model.Date" class="form-control"/>
+    <span asp-validation-for="@Model.Date" class="text-danger"></span>
+</div>
+
+ <div class="mb-3">
+  <label asp-for="@Model.UnitId" class="form-label">Unit</label>
+    <select asp-for="@Model.UnitId" asp-items="@Model.UnitList" disabled class="form-select" id="input-unit-id">
+            <option selected value="@Model.UnitId">Unit</option>
+    </select>
+  <span asp-validation-for="@Model.UnitId" class="text-danger"></span>
+</div>
+
+
+ <div class="mb-3">
+  <label asp-for="@Model.Price" class="form-label">Price</label>
+  <input asp-for="@Model.Price" class="form-control" id="input-price" disabled placeholder="Price">
+  <span asp-validation-for="@Model.Price" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+  <label asp-for="@Model.TotalPrice" class="form-label">Total Price</label>
+  <input asp-for="@Model.TotalPrice" class="form-control" id="input-total-price" readonly placeholder="Total Price">
+  <span asp-validation-for="@Model.TotalPrice" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <button type="submit" class="btn btn-primary px-5">Save</button>
+    <a asp-action="Transactions" class="btn btn-outline-dark">Back To Transactions</a>
+</div>
+</form> 
+
+
+@section scripts{
+  <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="~/js/addTransaction.js"></script>
+
+}
